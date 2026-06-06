@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Logic Tester</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+  <h2>Logic Tester</h2>
+<div class="controls">
+  <div class="checkbox-group">
+    <label><input type="checkbox" id="A"> True</label>
+    <label><input type="checkbox" id="B"> False</label>
+  </div>
+  <button onclick="testLogic()">Test</button>
+</div>
+  <div id="output"></div>
+
+  <script >
+    function testLogic() {
+      let A = document.getElementById("A").checked;
+      let B = document.getElementById("B").checked;
+
+      let andResult = A && B;
+      let orResult = A || B;
+      let notA = !A;
+      let nandResult = !(A && B);
+      let norResult = !(A || B);
+      let xorResult = (A && !B) || (!A && B);
+      let xnorResult = (A && B) || (!A && !B);
+
+      function formatResult(label, value) {
+        let className = value ? "true" : "false";
+        return `<div class="${className} popup">${label} ${value}</div>`;
+      }
+
+      let outputHTML = "";
+      outputHTML += formatResult("AND =", andResult);
+      outputHTML += formatResult("OR =", orResult);
+      outputHTML += formatResult("NOT A =", notA);
+      outputHTML += formatResult("NAND =", nandResult);
+      outputHTML += formatResult("NOR =", norResult);
+      outputHTML += formatResult("XOR =", xorResult);
+      outputHTML += formatResult("XNOR =", xnorResult);
+
+      document.getElementById("output").innerHTML = outputHTML;
+    }
+  </script>
+
+  <h5 class="developer">Developed by @ Deuu</h5>
+
+</body>
+</html>
